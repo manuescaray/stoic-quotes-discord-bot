@@ -1,9 +1,10 @@
+import asyncio
 import discord
 import os
-from datetime import datetime
 import json
+import random
 import requests
-import asyncio
+
 
 
 client = discord.Client()
@@ -11,14 +12,13 @@ client = discord.Client()
 
 async def background_task():
     await client.wait_until_ready()
-    target_date = "22:15"
     channel = client.get_channel(id = 936051467985510410)
-    while True:
-        now = datetime.now().strftime("%H:%M")
-        if now == target_date:
-            await channel.send("Arigato")
-        
-        await asyncio.sleep(30)
+    await channel.send(get_quote())
+    exit()
+
+
+def random_author()
+    authors = {0: 'marcus-aurelius', 1: 'epictetus', 2: 'seneca'}
 
 
 def get_quote():
@@ -32,17 +32,6 @@ def get_quote():
 @client.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(client))
-
-
-@client.event
-async def on_message(message):
-    if message.author == client.user:
-        return
-
-    channel = client.get_channel(id = 936051467985510410) 
-    if message.content.startswith("inspire"):
-        quote = get_quote()
-        await channel.send(quote)
 
 
 client.loop.create_task(background_task())
