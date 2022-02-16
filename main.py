@@ -23,7 +23,7 @@ def connect():
         cur = conn.cursor()
         
         quote = get_quote(cur)
-        formated_quote = '"{0}" -{1}'.format(quote[0][1], quote[0][0])
+        formated_quote = '"{0}" —{1}'.format(quote[0][1], quote[0][0])
         
         return formated_quote
 
@@ -42,7 +42,12 @@ def get_quote(cur):
     FROM authors
     JOIN quotes
     ON authors.author_id = quotes.author_id
-    WHERE quote_id = 32;
+    WHERE authors.author_id = (
+        SELECT floor(random() * (
+            SELECT COUNT(*) FROM authors
+        ) + 1))
+    ORDER BY RANDOM()
+    LIMIT 1;
     ''')
     result = cur.fetchall()
     return result
