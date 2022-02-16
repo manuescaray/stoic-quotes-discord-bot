@@ -34,8 +34,8 @@ var/
 pip-log.txt
 pip-delete-this-directory.txt
 
-airflow.cfg
-airflow.db
+airflow/airflow.cfg
+airflow/airflow.db
 unittests.cfg
-airflow-webserver.pid
+airflow/airflow-webserver.pid
 logs/
