@@ -9,7 +9,6 @@ i# Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
-
 .Python
 env/
 build/
@@ -26,10 +25,8 @@ var/
 *.egg-info/
 .installed.cfg
 *.egg
-
 pip-log.txt
 pip-delete-this-directory.txt
-
 airflow/airflow.cfg
 airflow/airflow.db
 unittests.cfg
